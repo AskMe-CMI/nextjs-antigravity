@@ -1,103 +1,194 @@
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Button from "./components/Button";
+import Link from "next/link";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+      <main className="flex-grow">
+        {/* Hero Section */}
+        <section className="relative py-20 px-6 md:px-12 flex flex-col items-center text-center">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-[var(--foreground)]">
+            Browse everything.
+          </h1>
+
+          <div className="w-full max-w-5xl h-[400px] md:h-[500px] rounded-3xl overflow-hidden relative mb-12 shadow-xl">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/assets/hero.png"
+              alt="Productivity Landscape"
+              fill
+              className="object-cover"
+              priority
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+            <div className="absolute inset-0 bg-black/20"></div>
+            <div className="absolute top-10 left-10 text-white text-left z-10">
+              <div className="text-6xl font-serif mb-2">78%</div>
+              <div className="text-sm uppercase tracking-wider">Productivity Increase</div>
+            </div>
+          </div>
+
+          <div className="flex gap-8 justify-center items-center text-[var(--muted)] mb-20">
+            <span>All features</span>
+            <span>Settings</span>
+            <span>Logs/goals</span>
+            <span>Shortcuts</span>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+          <div className="mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">We've cracked the code.</h2>
+            <p className="text-[var(--muted)] max-w-xl">
+              Master your schedule with our intuitive tools designed for modern life.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
+            {[
+              { title: "Task Manager", desc: "Organize your daily tasks with ease and precision." },
+              { title: "Progress Tracking", desc: "Visualize your productivity with beautiful charts." },
+              { title: "Smart Reminders", desc: "Never miss a deadline with intelligent notifications." },
+              { title: "Cloud Sync", desc: "Access your lists from anywhere, on any device." }
+            ].map((feature, i) => (
+              <div key={i} className="flex flex-col gap-3">
+                <div className="w-8 h-8 rounded-full bg-[var(--secondary)] mb-2"></div>
+                <h3 className="text-lg font-bold">{feature.title}</h3>
+                <p className="text-sm text-[var(--muted)]">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="w-full h-[400px] rounded-3xl overflow-hidden relative mb-24">
+            <Image
+              src="/assets/landscape.png"
+              alt="Serene Landscape"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </section>
+
+        {/* See the Big Picture Section */}
+        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8">See the Big Picture</h2>
+            <p className="text-[var(--muted)] mb-8 leading-relaxed">
+              Gain a comprehensive view of your life's projects and goals. Our dashboard brings everything together in one place.
+            </p>
+            <ul className="space-y-4 mb-8">
+              {["Track personal and professional goals", "Visualize your long-term progress", "Collaborate with friends and family"].map((item, i) => (
+                <li key={i} className="flex items-center gap-3 text-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <Button variant="secondary">Read More</Button>
+          </div>
+          <div className="h-[500px] rounded-3xl relative overflow-hidden">
+            <Image
+              src="/assets/abstract.png"
+              alt="Abstract Shapes"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </section>
+
+        {/* Why Choose Section */}
+        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Why Choose Me Do List?</h2>
+            <Button variant="secondary" size="sm" className="rounded-full px-6">Features</Button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-[var(--border)] pt-12">
+            {[
+              { title: "Focus", items: ["Distraction-free mode", "Pomodoro timer", "Focus sounds"] },
+              { title: "Organization", items: ["Smart folders", "Tags & labels", "Priority levels"] },
+              { title: "Integration", items: ["Calendar sync", "Email tasks", "API access"] }
+            ].map((col, i) => (
+              <div key={i} className={i !== 2 ? "md:border-r border-[var(--border)] pr-8" : ""}>
+                <h3 className="text-xl font-bold mb-6">{col.title}</h3>
+                <ul className="space-y-4">
+                  {col.items.map((item, j) => (
+                    <li key={j} className="text-sm text-[var(--muted)] py-2 border-b border-[var(--border)] last:border-0">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Testimonial Section */}
+        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div className="h-[500px] rounded-3xl overflow-hidden relative">
+            <Image
+              src="/assets/art.png"
+              alt="Artistic Sculpture"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div>
+            <blockquote className="text-2xl md:text-3xl font-serif leading-relaxed mb-8">
+              "I was skeptical, but Me Do List has completely transformed the way I manage my business. The interface is clean and intuitive, and the platform is a joy to use."
+            </blockquote>
+            <cite className="not-italic font-bold block mb-1">Jane Doe</cite>
+            <span className="text-sm text-[var(--muted)]">CEO, Creative Studio</span>
+          </div>
+        </section>
+
+        {/* Map Your Success */}
+        <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+          <div className="flex justify-between items-end mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold">Map Your Success</h2>
+            <Button variant="secondary">View Map</Button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {[
+              { num: "01", title: "Plan", desc: "Create a detailed roadmap for your projects." },
+              { num: "02", title: "Execute", desc: "Stay on track with daily tasks and reminders." },
+              { num: "03", title: "Review", desc: "Analyze your performance and adjust as needed." }
+            ].map((step, i) => (
+              <div key={i}>
+                <div className="text-5xl font-serif text-[var(--muted)]/30 mb-4">{step.num}</div>
+                <h3 className="text-lg font-bold mb-2">{step.title}</h3>
+                <p className="text-sm text-[var(--muted)]">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="w-full h-[400px] rounded-3xl overflow-hidden relative">
+            <Image
+              src="/assets/map.png"
+              alt="Success Map"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/10"></div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 px-6 md:px-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Connect with us</h2>
+          <p className="text-[var(--muted)] mb-8">Join thousands of organized people today.</p>
+          <Link href="/signup">
+            <Button size="lg" className="w-full max-w-md">Get Started</Button>
+          </Link>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      <Footer />
     </div>
   );
 }
