@@ -29,7 +29,7 @@ export default function SignIn() {
                 const data = await res.json();
                 setError(data.message || 'Invalid credentials');
             }
-        } catch (err) {
+        } catch {
             setError('Failed to sign in');
         }
     };
@@ -86,7 +86,7 @@ export default function SignIn() {
                 </form>
 
                 <div className="mt-6 text-center text-sm">
-                    <span className="text-[var(--muted)]">Don't have an account? </span>
+                    <span className="text-[var(--muted)]">Don&apos;t have an account? </span>
                     <Link href="/signup" className="text-[var(--primary)] font-medium hover:underline">
                         Sign up
                     </Link>

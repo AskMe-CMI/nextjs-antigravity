@@ -28,6 +28,7 @@ export async function POST(request: Request) {
 
         // In a real app, we would set a session cookie here.
         // For this demo, we'll just return success and the user info (excluding password).
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { password: _, ...userWithoutPassword } = user;
 
         return NextResponse.json({

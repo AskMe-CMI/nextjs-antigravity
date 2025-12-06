@@ -42,7 +42,7 @@ export default function Home() {
         {/* Features Section */}
         <section className="py-20 px-6 md:px-12 max-w-7xl mx-auto">
           <div className="mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">We've cracked the code.</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">We&apos;ve cracked the code.</h2>
             <p className="text-[var(--muted)] max-w-xl">
               Master your schedule with our intuitive tools designed for modern life.
             </p>
@@ -78,7 +78,7 @@ export default function Home() {
           <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-8">See the Big Picture</h2>
             <p className="text-[var(--muted)] mb-8 leading-relaxed">
-              Gain a comprehensive view of your life's projects and goals. Our dashboard brings everything together in one place.
+              Gain a comprehensive view of your life&apos;s projects and goals. Our dashboard brings everything together in one place.
             </p>
             <ul className="space-y-4 mb-8">
               {["Track personal and professional goals", "Visualize your long-term progress", "Collaborate with friends and family"].map((item, i) => (
@@ -139,7 +139,7 @@ export default function Home() {
           </div>
           <div>
             <blockquote className="text-2xl md:text-3xl font-serif leading-relaxed mb-8">
-              "I was skeptical, but Me Do List has completely transformed the way I manage my business. The interface is clean and intuitive, and the platform is a joy to use."
+              &quot;I was skeptical, but Me Do List has completely transformed the way I manage my business. The interface is clean and intuitive, and the platform is a joy to use.&quot;
             </blockquote>
             <cite className="not-italic font-bold block mb-1">Jane Doe</cite>
             <span className="text-sm text-[var(--muted)]">CEO, Creative Studio</span>

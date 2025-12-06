@@ -1,0 +1,27 @@
+[0m[0m
+[0m[4mD:\02-GIT HUB\nextjs-antigravity\app\dashboard\page.tsx[24m[0m
+[0m  [2m20:38[22m  [31merror[39m    Unexpected any. Specify a different type                                                                   [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m32:8[22m   [33mwarning[39m  React Hook useEffect has a missing dependency: 'router'. Either include it or remove the dependency array  [2mreact-hooks/exhaustive-deps[22m[0m
+[0m  [2m40:53[22m  [31merror[39m    Unexpected any. Specify a different type                                                                   [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[4mD:\02-GIT HUB\nextjs-antigravity\app\page.tsx[24m[0m
+[0m   [2m45:67[22m   [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m   [2m81:53[22m   [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m  [2m142:15[22m   [31merror[39m  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m  [2m142:176[22m  [31merror[39m  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m[0m
+[0m[4mD:\02-GIT HUB\nextjs-antigravity\app\signin\page.tsx[24m[0m
+[0m  [2m32:18[22m  [33mwarning[39m  'err' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4mD:\02-GIT HUB\nextjs-antigravity\app\signup\page.tsx[24m[0m
+[0m  [2m30:18[22m  [33mwarning[39m  'err' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4mD:\02-GIT HUB\nextjs-antigravity\scripts\init-db.js[24m[0m
+[0m  [2m1:1[22m   [31merror[39m  A `require()` style import is forbidden  [2m@typescript-eslint/no-require-imports[22m[0m
+[0m  [2m2:15[22m  [31merror[39m  A `require()` style import is forbidden  [2m@typescript-eslint/no-require-imports[22m[0m
+[0m[0m
+[0m[4mD:\02-GIT HUB\nextjs-antigravity\scripts\test-db.js[24m[0m
+[0m  [2m1:15[22m  [31merror[39m  A `require()` style import is forbidden  [2m@typescript-eslint/no-require-imports[22m[0m
+[0m[0m
+[0m[31m[1m✖ 12 problems (9 errors, 3 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[0m
