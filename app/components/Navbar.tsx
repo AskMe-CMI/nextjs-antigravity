@@ -15,6 +15,9 @@ const Navbar = () => {
                 <Link href="/signup">
                     <Button size="sm">Sign Up</Button>
                 </Link>
+                <Link href="/process-sheet">
+                    <Button size="sm">Process Sheet</Button>
+                </Link>
             </div>
         </nav>
     );
