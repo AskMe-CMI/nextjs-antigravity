@@ -71,6 +71,7 @@ jobs:
             docker run -d \
               --name nextjs-antigravity-app-1 \
               --restart unless-stopped \
+              -p 80:3000 \
               -e DB_HOST=${{ secrets.DB_HOST }} \
               -e DB_USER=${{ secrets.DB_USER }} \
               -e DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
