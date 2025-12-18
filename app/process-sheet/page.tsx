@@ -27,19 +27,19 @@ export default function ProcessSheet() {
             worksheets: [{
                 data,
                 columns: [
-                    { type: "text", title: "OPERATION ORDER", width: 150, readOnly: true },
+                    { type: "text", title: "OPERATION ORDER", width: 180, readOnly: true },
                     { type: "text", title: "LT", width: 50, readOnly: true },
-                    { type: "text", title: "PLAN STYLE", width: 100, readOnly: true },
-                    { type: "text", title: "PLAN STATUS", width: 100 },
-                    { type: "text", title: "BUDOMARI", width: 80, readOnly: true },
-                    { type: "text", title: "CURRENT STOCK", width: 100, readOnly: true },
-                    { type: "numeric", title: "20-Nov-25", width: 80, mask: "#,##0", readOnly: true },
-                    { type: "numeric", title: "21-Nov-25", width: 80, mask: "#,##0", readOnly: true },
-                    { type: "numeric", title: "22-Nov-25", width: 80, mask: "#,##0", readOnly: true },
-                    { type: "numeric", title: "23-Nov-25", width: 80, mask: "#,##0", readOnly: true },
-                    { type: "numeric", title: "24-Nov-25", width: 80, mask: "#,##0", readOnly: true },
-                    { type: "numeric", title: "25-Nov-25", width: 80, mask: "#,##0", readOnly: true },
-                    { type: "numeric", title: "26-Nov-25", width: 80, mask: "#,##0", readOnly: true },
+                    { type: "text", title: "PLAN STYLE", width: 120, readOnly: true },
+                    { type: "dropdown", title: "PLAN STATUS", width: 120, source: ['NO PLAN', 'PLAN'] },
+                    { type: "text", title: "BUDOMARI", width: 100, readOnly: true },
+                    { type: "text", title: "CURRENT STOCK", width: 150, readOnly: true },
+                    { type: "numeric", title: "20-Nov-25", width: 90, mask: "#,##0", readOnly: true },
+                    { type: "numeric", title: "21-Nov-25", width: 90, mask: "#,##0", readOnly: true },
+                    { type: "numeric", title: "22-Nov-25", width: 90, mask: "#,##0", readOnly: true },
+                    { type: "numeric", title: "23-Nov-25", width: 90, mask: "#,##0", readOnly: true },
+                    { type: "numeric", title: "24-Nov-25", width: 90, mask: "#,##0", readOnly: true },
+                    { type: "numeric", title: "25-Nov-25", width: 90, mask: "#,##0", readOnly: true },
+                    { type: "numeric", title: "26-Nov-25", width: 90, mask: "#,##0", readOnly: true },
                 ],
                 minDimensions: [13, 20],
                 tableOverflow: true,
@@ -52,24 +52,54 @@ export default function ProcessSheet() {
                 },
             }],
             onload: function (spreadsheet: any) {
+                // Option A: Set for the entire table container
+                spreadsheet.el.style.fontSize = '12px';
+                // Option B: Set for specific cell
+                // spreadsheet.worksheets[0].setStyle('A1', 'font-size', '16px');
+
+                // Style the "OPERATION ORDER" header
+                if (spreadsheet && spreadsheet.el) {
+                    const headers = spreadsheet.el.querySelectorAll('thead td');
+                    headers.forEach((header: HTMLElement) => {
+                        if (['OPERATION ORDER', 'LT', 'PLAN STYLE', 'PLAN STATUS', 'BUDOMARI', 'CURRENT STOCK'].includes(header.innerText)) {
+                            header.style.backgroundColor = '#808080';
+                        }
+                    });
+                }
+
                 const json = spreadsheet.worksheets[0].getData();
                 // @ts-ignore
                 json.forEach((row, rowIndex) => {
-                    // Check if the row is NOT "PRODUCTION PLAN"
+                    const columns = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"];
+
                     if (row[0] === "PRODUCTION PLAN") {
-                        const columns = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"];
+                        // Editable rows (Production Plan)
                         columns.forEach((col) => {
                             const cellName = `${col}${rowIndex + 1}`;
-                            // if (col === "A" || col === "B" || col === "C" || col === "D" || col === "E" || col === "F") {
-                            //     spreadsheet.worksheets[0].setReadOnly(cellName, true);
-                            // } else {
-
-                            // }
                             spreadsheet.worksheets[0].setReadOnly(cellName, false);
                             spreadsheet.worksheets[0].setStyle(cellName, 'background-color', '#c6acf3ff');
-                            //spreadsheet.worksheets[0].setStyle(cellName, 'color', '#888');
+                        });
+                    } else if (row[0] === "BALANCE AND DIFFERENCE") {
+                        // Editable rows (Balance and Difference)
+                        columns.forEach((col) => {
+                            const cellName = `${col}${rowIndex + 1}`;
+                            if (!["A", "B", "C", "D", "E", "F"].includes(col)) {
+                                spreadsheet.worksheets[0].setReadOnly(cellName, false);
+                                spreadsheet.worksheets[0].setStyle(cellName, 'color', '#ffffff');
+                                spreadsheet.worksheets[0].setStyle(cellName, 'background-color', '#333332');
+                            }
                         });
                     }
+                    else {
+                        // ReadOnly rows (Everything else)
+                        // columns.forEach((col) => {
+                        //     const cellName = `${col}${rowIndex + 1}`;
+                        //     // spreadsheet.worksheets[0].setReadOnly(cellName, true);
+                        //     spreadsheet.worksheets[0].setStyle(cellName, 'background-color', '#b7f899ff'); // Light gray for locked
+                        //     spreadsheet.worksheets[0].setStyle(cellName, 'color', '#888');
+                        // });
+                    }
+
                 });
             }
         };
