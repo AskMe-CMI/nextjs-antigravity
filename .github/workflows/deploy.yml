@@ -66,10 +66,10 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             docker pull ${{ env.REGISTRY }}/${{ needs.build.outputs.image_name }}:${{ github.ref_name }}
-            docker stop nextjs-antigravity || true
-            docker rm nextjs-antigravity || true
+            docker stop nextjs-antigravity-app || true
+            docker rm nextjs-antigravity-app || true
             docker run -d \
-              --name nextjs-antigravity \
+              --name nextjs-antigravity-app \
               --restart unless-stopped \
               -p 3000:3000 \
               -e DB_HOST=${{ secrets.DB_HOST }} \
