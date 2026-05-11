@@ -18,6 +18,9 @@ const Navbar = () => {
                 <Link href="/process-sheet">
                     <Button size="sm">Process Sheet</Button>
                 </Link>
+                <Link href="/operation-le">
+                    <Button size="sm">Operation LE</Button>
+                </Link>
             </div>
         </nav>
     );
