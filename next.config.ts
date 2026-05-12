@@ -9,6 +9,8 @@ const withPWA = withPWAInit({
   sw: "service-worker.js",
 });
 
-const nextConfig: NextConfig = {};
+const nextConfig: NextConfig = {
+  output: process.env.BUILD_STANDALONE === "true" ? "standalone" : undefined,
+};
 
 export default withPWA(nextConfig);
