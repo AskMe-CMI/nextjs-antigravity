@@ -13,7 +13,7 @@ export default function Home() {
         {/* Hero Section */}
         <section className="relative py-20 px-6 md:px-12 flex flex-col items-center text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-[var(--foreground)]">
-            Browse everything.
+            AskMe Services.
           </h1>
 
           <div className="w-full max-w-5xl h-[400px] md:h-[500px] rounded-3xl overflow-hidden relative mb-12 shadow-xl">
