@@ -9,8 +9,6 @@ const withPWA = withPWAInit({
   sw: "service-worker.js",
 });
 
-const nextConfig: NextConfig = {
-  output: "standalone",
-};
+const nextConfig: NextConfig = {};
 
 export default withPWA(nextConfig);
