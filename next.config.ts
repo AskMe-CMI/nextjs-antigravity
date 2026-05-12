@@ -7,6 +7,22 @@ const withPWA = withPWAInit({
   register: true,
   scope: "/",
   sw: "service-worker.js",
+  workboxOptions: {
+    runtimeCaching: [
+      {
+        // ดักจับทุก URL (GET Request)
+        urlPattern: /.*/i,
+        handler: "StaleWhileRevalidate",
+        options: {
+          cacheName: "offline-pages-cache",
+          expiration: {
+            maxEntries: 200, // เก็บสูงสุด 200 หน้า
+            maxAgeSeconds: 24 * 60 * 60, // อายุ Cache 24 ชั่วโมง
+          },
+        },
+      },
+    ],
+  },
 });
 
 const nextConfig: NextConfig = {
