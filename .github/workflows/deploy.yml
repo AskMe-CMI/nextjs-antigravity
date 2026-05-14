@@ -77,4 +77,9 @@ jobs:
               -e DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
               -e DB_NAME=${{ secrets.DB_NAME }} \
               -e MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }} \
+              -e JWT_SECRET=${{ secrets.JWT_SECRET }} \
+              -e MINIO_ENDPOINT=${{ secrets.MINIO_ENDPOINT }} \
+              -e MINIO_ROOT_USER=${{ secrets.MINIO_ROOT_USER }} \
+              -e MINIO_ROOT_PASSWORD=${{ secrets.MINIO_ROOT_PASSWORD }} \
+              -e MINIO_BUCKET_NAME=${{ secrets.MINIO_BUCKET_NAME }} \
               ${{ env.REGISTRY }}/${{ needs.build.outputs.image_name }}:${{ github.ref_name }}

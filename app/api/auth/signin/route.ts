@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import pool from '@/lib/db';
 import bcrypt from 'bcryptjs';
 import { RowDataPacket } from 'mysql2';
+import { SignJWT } from 'jose';
+import { cookies } from 'next/headers';
 
 export async function POST(request: Request) {
     try {
@@ -26,8 +28,24 @@ export async function POST(request: Request) {
             return NextResponse.json({ message: 'Invalid credentials' }, { status: 401 });
         }
 
-        // In a real app, we would set a session cookie here.
-        // For this demo, we'll just return success and the user info (excluding password).
+        // Generate JWT
+        const secret = new TextEncoder().encode(process.env.JWT_SECRET || 'fallback_secret');
+        const token = await new SignJWT({ userId: user.id, email: user.email })
+            .setProtectedHeader({ alg: 'HS256' })
+            .setIssuedAt()
+            .setExpirationTime('7d')
+            .sign(secret);
+
+        // Set HttpOnly cookie
+        const cookieStore = await cookies();
+        cookieStore.set('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'lax',
+            maxAge: 60 * 60 * 24 * 7, // 7 days
+            path: '/',
+        });
+
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { password: _, ...userWithoutPassword } = user;
 
